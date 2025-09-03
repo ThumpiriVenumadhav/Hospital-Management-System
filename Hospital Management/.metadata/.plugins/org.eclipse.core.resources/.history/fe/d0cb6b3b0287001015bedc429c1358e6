@@ -1,0 +1,26 @@
+package com.wipro.venu.kafka;
+
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
+
+import com.wipro.venu.entity.Appointment;
+
+import lombok.RequiredArgsConstructor;
+
+@Component
+@RequiredArgsConstructor
+public class AppointmentEventProducer {
+
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private static final String TOPIC = "appointment-events";
+
+    public void sendAppointmentBookedEvent(Appointment appointment) {
+        kafkaTemplate.send(TOPIC, "BOOKED", appointment);
+    }
+
+    public void sendAppointmentCancelledEvent(Appointment appointment) {
+        kafkaTemplate.send(TOPIC, "CANCELLED", appointment);
+    }
+}
+

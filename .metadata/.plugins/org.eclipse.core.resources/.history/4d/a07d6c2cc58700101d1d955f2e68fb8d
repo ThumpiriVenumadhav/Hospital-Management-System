@@ -1,0 +1,21 @@
+package com.wipro.venu.kafka;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.wipro.venu.entity.Appointment;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AppointmentProducer {
+
+	 private final KafkaTemplate<String, Appointment> kafkaTemplate;
+
+	    public void sendPayment(Appointment appointment) {
+	        kafkaTemplate.send("payment-topic", appointment);
+}
+
+
+    

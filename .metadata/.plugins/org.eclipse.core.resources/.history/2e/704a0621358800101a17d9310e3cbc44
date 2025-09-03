@@ -1,0 +1,55 @@
+package com.wipro.venu.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.wipro.venu.filter.JwtAuthenticationFilter;
+
+
+@Configuration
+public class GatewayConfig {
+
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Bean
+    public RouteLocator routes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                // Auth service route - publicly accessible
+                .route("userauth-service-route", r -> r.path("/api/auth/**")
+                        .uri("lb://USER-AUTHENTICATION-SERVICE"))
+
+                // Patient service route - requires ADMIN role
+                .route("patient-service-route", r -> r.path("/api/v1/patient/**")
+                        .filters(f -> {
+                            JwtAuthenticationFilter.Config config = new JwtAuthenticationFilter.Config();
+                            config.setRequiredRole("ADMIN");
+                            return f.filter(jwtAuthenticationFilter.apply(config));
+                        })
+                        .uri("lb://PATIENT-SERVICE"))
+
+                // Doctor service route - requires valid token (USER or ADMIN allowed)
+                .route("doctor-service-route", r -> r.path("/api/v1/doctor/**")
+                        .filters(f -> {
+                            JwtAuthenticationFilter.Config config = new JwtAuthenticationFilter.Config();
+                            // No specific role → just validate token
+                            return f.filter(jwtAuthenticationFilter.apply(config));
+                        })
+                        .uri("lb://DOCTOR-SERVICE"))
+
+                // Appointment service route - requires PATIENT role
+                .route("appointment-service-route", r -> r.path("/api/v1/appointment/**")
+                        .filters(f -> {
+                            JwtAuthenticationFilter.Config config = new JwtAuthenticationFilter.Config();
+                            config.setRequiredRole("PATIENT");
+                            return f.filter(jwtAuthenticationFilter.apply(config));
+                        })
+                        .uri("lb://APPOINTMENT-SERVICE"))
+
+                .build();
+    }
+
+}

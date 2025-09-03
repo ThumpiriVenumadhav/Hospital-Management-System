@@ -1,0 +1,42 @@
+<!-- Navbar for guests -->
+<div *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
+  <div class="navbar-noauth">
+    <mat-toolbar>
+      <button mat-icon-button aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Hospital Management</span>
+      <span class="example-spacer"></span>
+      <button mat-button routerLink="/signup">Signup</button>
+      <button mat-button routerLink="/login">Login</button>
+    </mat-toolbar>
+  </div>
+</div>
+
+<!-- Navbar for logged-in users -->
+<div *ngIf="isUserLoggedIn">
+  <div class="navbar-noauth">
+    <mat-toolbar>
+      <button mat-icon-button aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>HMS Management</span>
+      <span class="example-spacer"></span>
+      <button mat-button routerLink="/dashboard">Dashboard</button>
+      <button mat-button routerLink="/viewdoctors">View Doctors</button>
+      <button mat-button routerLink="/addpatient">Add Patient</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </mat-toolbar>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<div class="home-container">
+  <div class="overlay">
+    <h1>Welcome to Our Hospital Management System</h1>
+    <p>
+      A smart platform to manage patients, doctors, appointments, and billing seamlessly.
+      Our mission is to make healthcare management simple and efficient.
+    </p>
+  </div>
+</div>

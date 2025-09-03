@@ -1,0 +1,54 @@
+<app-admin-nav></app-admin-nav>
+
+<div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
+  <h2 class="text-2xl font-semibold text-center mb-6">Add Doctor</h2>
+
+  <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()" class="space-y-5">
+    
+    <!-- Doctor Name -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Doctor Name</mat-label>
+      <input matInput placeholder="Enter doctor's name" formControlName="name">
+      <mat-error *ngIf="doctorForm.get('name')?.hasError('required')">
+        Doctor name is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Specialization -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Specialization</mat-label>
+      <input matInput placeholder="Enter specialization" formControlName="specialization">
+      <mat-error *ngIf="doctorForm.get('specialization')?.hasError('required')">
+        Specialization is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Enter email" formControlName="email">
+      <mat-error *ngIf="doctorForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="doctorForm.get('email')?.hasError('email')">
+        Enter a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Phone</mat-label>
+      <input matInput type="tel" placeholder="Enter phone number" formControlName="phone">
+      <mat-error *ngIf="doctorForm.get('phone')?.hasError('required')">
+        Phone number is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <div class="text-center mt-6">
+      <button mat-raised-button color="primary" type="submit" [disabled]="doctorForm.invalid">
+        Add Doctor
+      </button>
+    </div>
+  </form>
+</div>

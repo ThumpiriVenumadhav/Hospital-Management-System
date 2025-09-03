@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.wipro.venu.exceptions&apos; to &apos;Doctor-Service/src/main/java/com.wipro.venu&apos;&#x0D;&#x0A;- Original project: &apos;Patient-Service&apos;&#x0D;&#x0A;- Destination element: &apos;Doctor-Service/src/main/java/com.wipro.venu&apos;&#x0D;&#x0A;- Original element: &apos;Patient-Service/src/main/java/com.wipro.venu.exceptions&apos;" description="Copy package" destination="=Doctor-Service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.wipro.venu" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.wipro.venu.exceptions" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1756612006382" version="1.0"/>
+</session>

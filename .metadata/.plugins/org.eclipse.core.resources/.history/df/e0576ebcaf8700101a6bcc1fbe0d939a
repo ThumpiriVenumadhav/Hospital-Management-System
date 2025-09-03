@@ -1,0 +1,30 @@
+package com.example.patient.service;
+
+import java.util.List;
+
+import com.wipro.venu.dto.MedicalRecordDto;
+import com.wipro.venu.dto.PatientDto;
+import com.wipro.venu.entity.MedicalRecord;
+import com.wipro.venu.entity.Patient;
+
+public interface patientServicee {
+
+	Patient savePatient(PatientDto patient);
+
+	List<MedicalRecord> getAllMedicalRecords();
+
+	Patient updateMedicalRecord(Long id, MedicalRecordDto medicalRecord);
+
+	void deletePatient(Long id);
+
+	List<Patient> getAllPatients();
+
+	Patient getPatientById(Long id);
+
+	MedicalRecord saveMedicalRecord(MedicalRecord medicalRecord);
+
+	
+
+	
+
+}

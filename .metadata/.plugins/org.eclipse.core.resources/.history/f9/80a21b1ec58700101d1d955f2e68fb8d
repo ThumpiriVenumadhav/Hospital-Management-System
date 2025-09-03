@@ -1,0 +1,11 @@
+package com.wipro.venu.kafka;
+
+
+@Service
+@RequiredArgsConstructor
+public class AppointmentProducer {
+
+}
+
+
+    

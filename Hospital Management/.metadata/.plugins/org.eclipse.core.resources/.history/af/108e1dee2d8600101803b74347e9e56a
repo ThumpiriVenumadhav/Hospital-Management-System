@@ -1,0 +1,51 @@
+package com.wipro.venu.service;
+
+package com.wipro.venu.service;
+
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.sendgrid.*;
+import com.wipro.venu.dto.AppointmentEvent;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class EmailService {
+
+    @Value("${sendgrid.api.key}")
+    private String sendgridApiKey;
+
+    @Value("${notification.from.email}")
+    private String fromEmail;
+
+    public void sendAppointmentNotification(AppointmentEvent event) {
+        Email from = new Email(fromEmail);
+        Email to = new Email(event.getPatientEmail());
+        String subject = "Appointment " + event.getStatus();
+        String body = "Your appointment with ID " + event.getAppointmentId() +
+                " is " + event.getStatus() +
+                " on " + event.getAppointmentDate();
+
+        Content content = new Content("text/plain", body);
+        Mail mail = new Mail(from, subject, to, content);
+
+        SendGrid sg = new SendGrid(sendgridApiKey);
+        Request request = new Request();
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+
+            log.info("✅ Email sent. Status: {}", response.getStatusCode());
+        } catch (IOException ex) {
+            log.error("❌ Failed to send email", ex);
+        }
+    }
+}
+

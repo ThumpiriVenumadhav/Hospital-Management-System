@@ -1,0 +1,11 @@
+package com.surya.rk.services.auth;
+
+import com.wipro.venu.dto.SignupRequest;
+import com.wipro.venu.dto.UserDto;
+
+public interface AuthService 
+{
+
+	UserDto signupUser(SignupRequest signupRequest);
+	boolean hasUserWithEmail(String email);
+}

@@ -1,0 +1,49 @@
+/* Container styling */
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Form card */
+.form-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Material form fields */
+mat-form-field {
+  width: 100%;
+}
+
+/* Submit button */
+button[mat-raised-button] {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #1565c0; /* darker blue on hover */
+}
+
+/* Error messages */
+mat-error {
+  font-size: 0.85rem;
+  color: #d32f2f;
+}

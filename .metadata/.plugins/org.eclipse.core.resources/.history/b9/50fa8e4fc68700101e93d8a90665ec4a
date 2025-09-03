@@ -1,0 +1,105 @@
+package com.wipro.venu.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.wipro.venu.dto.MedicalRecordDto;
+import com.wipro.venu.dto.PatientDto;
+import com.wipro.venu.entity.MedicalRecord;
+import com.wipro.venu.entity.Patient;
+import com.wipro.venu.repository.medicalRecordRepo;
+import com.wipro.venu.repository.patientRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class patientServiceImpl implements patientServicee {
+
+    @Autowired
+    private patientRepository repo;
+
+    @Autowired
+    private medicalRecordRepo medicalRepo;
+
+    @Override
+    public Patient savePatient(PatientDto patientDto) {
+        log.info("Saving new patient: {}", patientDto.getName());
+
+        Patient newPatient = new Patient();
+        newPatient.setName(patientDto.getName());
+        newPatient.setAddress(patientDto.getAddress());
+        newPatient.setEmail(patientDto.getEmail());
+        newPatient.setGender(patientDto.getGender());
+        newPatient.setDob(patientDto.getDob());
+        newPatient.setWeight(patientDto.getWeight());
+        newPatient.setHeight(patientDto.getHeight());
+
+        Patient saved = repo.save(newPatient);
+        log.debug("Patient saved with ID: {}", saved.getId());
+
+        return saved;
+    }
+
+    @Override
+    public List<MedicalRecord> getAllMedicalRecords() {
+        log.info("Fetching all medical records");
+        return medicalRepo.findAll();
+    }
+
+    @Override
+    public void deletePatient(Long id) {
+        log.warn("Deleting patient with ID: {}", id);
+        if (!repo.existsById(id)) {
+            log.error("Patient not found with ID {}", id);
+            throw new RuntimeException("Patient not found with id " + id);
+        }
+        repo.deleteById(id);
+        log.info("Deleted patient with ID: {}", id);
+    }
+
+    @Override
+    public Patient updateMedicalRecord(Long id, MedicalRecordDto medicalRecordDto) {
+        log.info("Updating medical record for patient ID: {}", id);
+
+        Patient patient = repo.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Patient not found with ID {}", id);
+                    return new RuntimeException("Patient not found with id " + id);
+                });
+
+        MedicalRecord record = new MedicalRecord();
+        record.setId(medicalRecordDto.getId());  // if null → new record
+        record.setDescription(medicalRecordDto.getDescription());
+        record.setDoctorName(medicalRecordDto.getDoctorName());
+        record.setVisitedDate(medicalRecordDto.getVisitedDate());
+        record.setMedicines(medicalRecordDto.getMedicines());
+        record.setPatient(patient);
+
+        medicalRepo.save(record);
+        log.info("Medical record updated for patient ID: {}", id);
+
+        return patient;
+    }
+
+    @Override
+    public List<Patient> getAllPatients() {
+        log.info("Fetching all patients");
+        return repo.findAll();
+    }
+
+    @Override
+    public Patient getPatientById(Long id) {
+        log.info("Fetching patient with ID: {}", id);
+        return repo.findById(id).orElseThrow();
+    }
+
+    @Override
+    public MedicalRecord saveMedicalRecord(MedicalRecord medicalRecord) {
+        log.info("Saving medical record for patient ID: {}", 
+                 medicalRecord.getPatient() != null ? medicalRecord.getPatient().getId() : "N/A");
+        return medicalRepo.save(medicalRecord);
+    }
+}

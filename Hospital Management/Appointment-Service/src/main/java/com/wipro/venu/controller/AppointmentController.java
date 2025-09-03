@@ -1,0 +1,68 @@
+package com.wipro.venu.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.wipro.venu.dto.AppointmentRequest;
+import com.wipro.venu.dto.AppointmentResponse;
+import com.wipro.venu.service.AppointmentService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/appointments")
+@RequiredArgsConstructor
+public class AppointmentController {
+
+    private final AppointmentService appointmentService;
+
+    // Book appointment
+    @PostMapping
+    public ResponseEntity<AppointmentResponse> bookAppointment(@Valid @RequestBody AppointmentRequest request) {
+        return ResponseEntity.ok(appointmentService.bookAppointment(request));
+    }
+
+    // Get appointment by id
+    @GetMapping("/{id}")
+    public ResponseEntity<AppointmentResponse> getAppointmentById(@PathVariable Long id) {
+        return ResponseEntity.ok(appointmentService.getAppointmentById(id));
+    }
+
+    // Get all appointments by patient
+    @GetMapping("/patient/{patientId}")
+    public ResponseEntity<List<AppointmentResponse>> getAppointmentsByPatient(@PathVariable Long patientId) {
+        return ResponseEntity.ok(appointmentService.getAppointmentsByPatient(patientId));
+    }
+
+    // Get all appointments by doctor
+    @GetMapping("/doctor/{doctorId}")
+    public ResponseEntity<List<AppointmentResponse>> getAppointmentsByDoctor(@PathVariable Long doctorId) {
+        return ResponseEntity.ok(appointmentService.getAppointmentsByDoctor(doctorId));
+    }
+
+    // Update appointment
+    @PutMapping("/{id}")
+    public ResponseEntity<AppointmentResponse> updateAppointment(
+            @PathVariable Long id,
+            @RequestBody AppointmentRequest request
+    ) {
+        return ResponseEntity.ok(appointmentService.updateAppointment(id, request));
+    }
+
+    // Cancel appointment
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> cancelAppointment(@PathVariable Long id) {
+        appointmentService.cancelAppointment(id);
+        return ResponseEntity.noContent().build();
+    }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\venum\Downloads\Kafka-Email-sending-main\Kafka-Email-sending-main\Payment-Service"/>
+			<item value="C:\Users\venum\Downloads\Kafka-Email-sending-main\Kafka-Email-sending-main\Email-Service"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\Quizs-Service"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\Questions-Service"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\UserAuth-Server"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\API-GateWay"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\Config-Server"/>
+			<item value="C:\Users\venum\Downloads\Quiz-Microservices-Industrial-main (1)\Quiz-Microservices-Industrial-main\DiscoveryService"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

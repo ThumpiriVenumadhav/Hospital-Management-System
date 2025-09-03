@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\venum\Downloads\Kafka-Email-sending-main\Kafka-Email-sending-main\Email-Service"/>
+			<item value="C:\Users\venum\Documents\Hospital Management\API-GateWay"/>
+			<item value="C:\Users\venum\Documents\Hospital Management\.metadata\.plugins\org.eclipse.core.resources\.projects\API-GateWay"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\Notification"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\Patient"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\UserAuth-Server"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\Doctor"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\DiscoveryServices"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\Config-Server"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\Billing"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\appointment"/>
+			<item value="C:\Users\venum\Downloads\hospital-management-main\hospital-management-main\API-GateWay"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

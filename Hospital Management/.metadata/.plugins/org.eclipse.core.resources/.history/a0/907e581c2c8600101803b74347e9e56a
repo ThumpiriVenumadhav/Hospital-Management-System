@@ -1,0 +1,5 @@
+package com.wipro.venu.kafka;
+
+public class AppointmentEventConsumer {
+
+}

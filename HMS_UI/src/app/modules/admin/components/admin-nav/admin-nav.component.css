@@ -1,0 +1,20 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-noauth mat-toolbar {
+  background-color: #87CEEB; /* Sky Blue */
+}
+
+.navbar-noauth mat-toolbar button {
+  color: #ffffff !important; /* White text for contrast */
+}
+
+.navbar-noauth mat-toolbar span {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.navbar-noauth mat-toolbar mat-icon {
+  color: #ffffff !important;
+}

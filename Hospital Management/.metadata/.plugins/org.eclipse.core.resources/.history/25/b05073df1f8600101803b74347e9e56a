@@ -1,0 +1,5 @@
+package com.wipro.venu.dto;
+
+public class AppointmentResponse {
+
+}

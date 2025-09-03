@@ -1,0 +1,20 @@
+package com.wipro.venu.dto;
+
+import com.wipro.venu.enums.Gender;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class PatientResponse {
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    private int age;
+    private Gender gender;
+    private String address;
+    private String medicalHistory;
+    
+}

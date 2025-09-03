@@ -1,0 +1,11 @@
+package com.example.patient.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.wipro.venu.entity.MedicalRecord;
+
+public interface medicalRecordRepo extends JpaRepository<MedicalRecord, Long> {
+
+	
+
+}

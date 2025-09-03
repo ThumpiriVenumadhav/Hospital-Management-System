@@ -1,0 +1,5 @@
+package com.wipro.venu.aop;
+
+public class LoggingAspect {
+
+}

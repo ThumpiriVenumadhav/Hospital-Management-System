@@ -1,0 +1,35 @@
+package com.wipro.venu.dto;
+
+import com.wipro.venu.enums.Gender;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class PatientRequest {
+	
+	@NotNull(message = "Name should not be empty;")
+    private String name;
+	
+	@Email(message = "Email should be valid")
+    private String email;
+	
+	@NotNull(message = "phone number should not be empty")
+	@Pattern(regexp = "^[0-9]{10}$", message = "Phone must be 10 digits")
+    private String phone;
+	
+	@NotNull(message = "age should not be empty")
+    private int age;
+	
+	@NotNull(message = "Gender should not be empty")
+    private Gender gender;
+	
+	
+    private String address;
+    private String medicalHistory;
+   
+}
