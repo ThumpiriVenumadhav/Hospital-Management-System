@@ -1,10 +1,10 @@
-package com.wipro.venu;
+package com.surya.kafka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NotificationServiceApplicationTests {
+class EmailServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

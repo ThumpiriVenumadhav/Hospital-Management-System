@@ -1,13 +1,13 @@
-package com.wipro.venu;
+package com.venu.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NotificationServiceApplication {
+public class EmailServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NotificationServiceApplication.class, args);
+		SpringApplication.run(EmailServiceApplication.class, args);
 	}
 
 }

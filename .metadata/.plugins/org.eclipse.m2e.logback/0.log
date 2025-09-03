@@ -2209,3 +2209,4 @@ Caused by: java.lang.IllegalStateException: serverCapabilities unexpectedly null
 	at org.springsource.ide.eclipse.commons.livexp.core.LiveVariable.setValue(LiveVariable.java:46)
 	at org.springframework.ide.eclipse.boot.dash.util.AbstractPollingAppReadyStateMonitor$1.run(AbstractPollingAppReadyStateMonitor.java:51)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2025-09-03 15:45:33,767 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.

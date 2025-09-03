@@ -1,0 +1,21 @@
+package com.venu.kafka;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class EmailConsumer {
+
+    private final EmailService emailService;
+
+    @KafkaListener(topics = "appointment-events", groupId = "email-group")
+    public void consume(Appointment appointment) {
+      log.warn(" Appointment: {}" , appointment);
+        emailService.sendAppointmentEmail(appointment);
+    }
+}
