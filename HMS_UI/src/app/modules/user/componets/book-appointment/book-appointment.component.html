@@ -1,0 +1,38 @@
+<app-user-nav></app-user-nav>
+
+<div class="appointment-container">
+  <h2>Book an Appointment</h2>
+
+  <form (ngSubmit)="bookAppointment()" #appointmentForm="ngForm">
+
+    <!-- Select Doctor -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Doctor</mat-label>
+      <mat-select [(ngModel)]="appointment.doctorId" name="doctorId" required>
+        <mat-option *ngFor="let doc of doctors" [value]="doc.id">
+          Dr. {{ doc.name }} - {{ doc.specialization }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Date -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" [(ngModel)]="appointment.date" name="date" required>
+    </mat-form-field>
+
+    <!-- Time -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Time</mat-label>
+      <input matInput type="time" [(ngModel)]="appointment.time" name="time" required>
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit">Book</button>
+      <button mat-raised-button color="warn" type="button" routerLink="/user/dashboard">Cancel</button>
+    </div>
+
+  </form>
+</div>
+

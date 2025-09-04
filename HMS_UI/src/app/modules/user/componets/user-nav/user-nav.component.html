@@ -1,0 +1,37 @@
+<div *ngIf="isUserLoggedIn">
+  <div class="navbar-noauth">
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>HMS Application</span>
+      <span class="example-spacer"></span>
+
+      <!-- User Dashboard -->
+      <button mat-button routerLink="/user/dashboard" class="example-icon">
+        Dashboard
+      </button>
+
+      <!-- View Appointments -->
+      <button mat-button routerLink="/user/appointments" class="example-icon">
+        My Appointments
+      </button>
+
+      <!-- Book Appointment -->
+      <button mat-button routerLink="/user/bookappointment" class="example-icon">
+        Book Appointment
+      </button>
+
+      <!-- Profile -->
+      <button mat-button routerLink="/user/profile" class="example-icon">
+        Profile
+      </button>
+
+      <!-- Logout -->
+      <button mat-button routerLink="/login" (click)="logout()" class="example-icon">
+        Logout
+      </button>
+    </mat-toolbar>
+  </div>
+</div>

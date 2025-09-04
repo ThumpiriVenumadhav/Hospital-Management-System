@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../../../auth/services/storage.service';
 
-const BASIC_URL = "http://localhost:8765/"; // or your backend base URL
+const BASIC_URL = "http://localhost:8765/"; 
 
 @Injectable({
   providedIn: 'root'
