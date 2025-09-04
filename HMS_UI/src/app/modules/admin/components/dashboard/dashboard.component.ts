@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../material.module';
 import { AdminNavComponent } from '../admin-nav/admin-nav.component';
 import { StorageService } from '../../../../auth/services/storage.service';
-
-import { AdminService } from '../../services/admin.service';// <-- make sure path is correct
+import { AdminService } from '../../services/admin.service'; // all calls here
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +16,13 @@ import { AdminService } from '../../services/admin.service';// <-- make sure pat
 export class DashboardComponent implements OnInit {
 
   isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
-  doctors: any[] = [];   // Store doctors fetched from API
+
+  doctors: any[] = [];
+  patients: any[] = [];
+
+  // ✅ define columns for Material tables
+  displayedDoctorColumns: string[] = ['id', 'name', 'email', 'phone', 'specialty'];
+  displayedPatientColumns: string[] = ['id', 'name', 'email', 'phone', 'age', 'gender'];
 
   constructor(
     private router: Router,
@@ -30,16 +35,20 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDoctors();
+    this.getPatients();
   }
 
   getDoctors(): void {
     this.adminService.getAllDoctors().subscribe({
-      next: (res: any) => {
-        this.doctors = res;
-      },
-      error: (err: any) => {
-        console.error('Error fetching doctors:', err);
-      }
+      next: (res: any) => this.doctors = res,
+      error: (err: any) => console.error('Error fetching doctors:', err)
+    });
+  }
+
+  getPatients(): void {
+    this.adminService.getAllPatients().subscribe({
+      next: (res: any) => this.patients = res,
+      error: (err: any) => console.error('Error fetching patients:', err)
     });
   }
 

@@ -1,0 +1,47 @@
+ 
+<app-admin-nav></app-admin-nav>
+ 
+
+<div class="add-patient-container">
+  <h2>Add Patient</h2>
+
+  <form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+
+    <!-- Name -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="patient.name" name="name" required>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="patient.email" name="email" required>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.phone" name="phone" required>
+    </mat-form-field>
+
+    <!-- Age -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" [(ngModel)]="patient.age" name="age" required>
+    </mat-form-field>
+
+    <!-- Gender -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Gender</mat-label>
+      <mat-select [(ngModel)]="patient.gender" name="gender" required>
+        <mat-option value="MALE">Male</mat-option>
+        <mat-option value="FEMALE">Female</mat-option>
+        <mat-option value="OTHER">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Add Patient</button>
+    <button mat-raised-button color="warn" type="button" routerLink="/admin/dashboard">Cancel</button>
+  </form>
+</div>

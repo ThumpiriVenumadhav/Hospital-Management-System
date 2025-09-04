@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-add-doctor',
   standalone: true,   // Angular 15+ standalone component
-  imports: [MaterialModule, ReactiveFormsModule, AdminNavComponent,CommonModule],  // ✅ Add ReactiveFormsModule here
+  imports: [MaterialModule, ReactiveFormsModule, AdminNavComponent,CommonModule],  //  Add ReactiveFormsModule here
   templateUrl: './add-doctor.component.html',
   styleUrls: ['./add-doctor.component.css']
 })
